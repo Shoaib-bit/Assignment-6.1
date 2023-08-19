@@ -1,0 +1,241 @@
+.container{
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-products{
+    width: 350px;
+    height: 400px;
+    background-color: rgb(144, 109, 231);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    align-items: center;
+}
+.add-products div{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.add-products div input,select{
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 10px;
+    outline: none;
+}
+.add-products div input::placeholder{
+    color: white;
+}
+.add-products div select option{
+   font-size: 18px;
+   color: black;
+}
+.btn{
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    color: rgb(144, 109, 231);
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+} 
+.btn:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.add-category{
+    width: 350px;
+    height: 300px;
+    background-color: rgb(144, 109, 231);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 30px;
+    align-items: center;
+}
+.add-category div{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.add-category div input,select{
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 10px;
+    outline: none;
+}
+.add-category div input::placeholder{
+    color: white;
+}
+.add-category div select option{
+   font-size: 18px;
+   color: black;
+}
+.add-vender{
+    width: 350px;
+    height: 340px;
+    background-color: rgb(144, 109, 231);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    align-items: center;
+}
+.add-vender div{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.add-vender div input,select{
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 10px;
+    outline: none;
+}
+.add-vender div input::placeholder{
+    color: white;
+}
+.add-vender div select option{
+   font-size: 18px;
+}
+.search-product-id{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-color: rgb(144, 109, 231);
+    color: white;
+}
+.search-product-id div{
+    width: 90%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.search-product-id div input{
+    width: 60%;
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 10px;
+    outline: none;
+}
+.search-product-id div input::placeholder{
+    color: white;
+}
+.search-product-id div button{
+    height: 100%;
+    width: 100px;
+    border: none;
+    color: rgb(144, 109, 231);
+    background-color: white;
+    cursor: pointer;
+}
+.modall{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(28, 30, 30, 0.594);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+.modall-div{
+    width: 850px;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 40px 40px 40px;
+    align-items: center;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+}
+.modall-div table{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+.modall-div table th,td{
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid;
+}
+.btn-div{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+.btn-div button{
+    background-color: rgb(144, 109, 231);
+    color: white;
+    cursor: pointer;
+    border: none;
+    width: 130px;
+    height: 100%;
+}
+.btn-div button:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+.product-by-vender{
+    width: 700px;
+    min-height: 300px;
+    background-color: rgb(144, 109, 231);
+    padding: 30px;
+}
+.product-by-vender div{
+    display: flex;
+    padding: 0px 50px;
+}
+.product-by-vender div select{
+    border: 1px solid white;
+}
+.product-by-vender div select option{
+    color: black;
+}
+.product-by-vender div button{
+    width: 80px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+.product-by-vender table{
+    margin-top: 35px;
+    width: 100%;
+    min-height: 100px;
+    background-color: white;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+.product-by-vender table th,td{
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid;
+}
+.input{
+    width: 100%;
+    height: 40px;
+    margin-right: 10px;
+    padding-left: 10px;
+    outline: none;
+}

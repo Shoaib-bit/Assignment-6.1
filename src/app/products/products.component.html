@@ -1,0 +1,209 @@
+<div class="container">
+    <form class="add-products" *ngIf="screen == 'add-product'" (ngSubmit)="getProduct()" [formGroup]="productsForm">
+        <div>
+            <p>Product Name*</p>
+            <input type="text" placeholder="Enter Name" formControlName = "name">
+        </div>
+        <div>
+            <p>Product Price*</p>
+            <input type="number" placeholder="Enter Price" formControlName = "price">
+        </div>
+        <div>
+            <p>Select Category*</p>
+            <select formControlName = "categoryName">
+                <option *ngFor="let category of category" value="{{category.name}}">{{category.name}}</option>
+            </select>
+        </div>
+        <div>
+            <p>Select Vender*</p>
+            <select formControlName = "venderName">
+                <option *ngFor="let vender of vender" value = "{{vender.firstName}}">{{vender.firstName}}</option>
+            </select>
+        </div>
+        <button class="btn" type="submit">Add</button>
+    </form>
+    <form class="add-category" *ngIf="screen == 'add-category'" (ngSubmit)="getcategory()" [formGroup]="categoryForm">
+        <div>
+            <p>Category Name*</p>
+            <input type="text" placeholder="Enter Name" formControlName = "name">
+        </div>
+        <div>
+            <p>Category Status*</p>
+            <select formControlName = "status">
+                <option value="Active" selected>Active</option>
+                <option value="Inactive">Inactive</option>
+            </select> 
+        </div>
+        <button class="btn" type="submit">Add</button>
+    </form>
+    <form class="add-vender" *ngIf="screen == 'add-vender'" (ngSubmit) = "getVender()" [formGroup] = "venderForm">
+        <div>
+            <p>First Name*</p>
+            <input type="text" placeholder="Enter First Name" formControlName = "firstName">
+        </div>
+        <div>
+            <p>Last Name*</p>
+            <input type="text" placeholder="Enter Last Name" formControlName = "lastName">
+        </div>
+        <div>
+            <p>Phone Number*</p>
+            <input type="number" placeholder="Enter Phone Number" formControlName = "phoneNumber">
+        </div>
+        <button class="btn" type="submit">Add</button>
+    </form>
+    <form class="search-product-id" *ngIf="screen == 'delete-by-id'"> 
+        <div>
+            <input type="number" placeholder="Enter Product Id" #productId>
+            <button (click)="deleteById(productId)">Search</button>
+        </div>
+    </form>
+    <form class="search-product-id" *ngIf="screen == 'delete-by-name'"> 
+        <div>
+            <input type="Text" placeholder="Enter Product Name" #productName>
+            <button (click)="deleteByName(productName)">Search</button>
+        </div>
+    </form>
+    <div *ngIf="screen == 'product-by-category'" class="product-by-vender">
+        <div>
+            <select #dat>
+                <option selected disabled>Select category</option>
+                <option *ngFor="let category of category" value="{{category.name}}">{{category.name}}</option>
+            </select>
+            <button (click)="categoryData(dat)">Click</button>
+        </div>
+        <table *ngIf="categoryName != ''">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>category</td>
+                    <td>Vender</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let products of products">
+                    <td *ngIf="products.categoryName == categoryName">{{products.id}}</td>
+                    <td *ngIf="products.categoryName == categoryName">{{products.name}}</td>
+                    <td *ngIf="products.categoryName == categoryName">{{products.price}}</td>
+                    <td *ngIf="products.categoryName == categoryName">{{products.categoryName}}</td>
+                    <td *ngIf="products.categoryName == categoryName">{{products.venderName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="screen == 'product-by-vender'" class="product-by-vender">
+        <div>
+            <select #dat>
+                <option selected disabled>Select vender</option>
+                <option *ngFor="let vender of vender" value="{{vender.firstName}}">{{vender.firstName}}</option>
+            </select>
+            <button (click)="venderData(dat)">Click</button>
+        </div>
+        <table *ngIf="venderName != ''">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>category</td>
+                    <td>Vender</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let products of products">
+                    <td *ngIf="products.venderName == venderName">{{products.id}}</td>
+                    <td *ngIf="products.venderName == venderName">{{products.name}}</td>
+                    <td *ngIf="products.venderName == venderName">{{products.price}}</td>
+                    <td *ngIf="products.venderName == venderName">{{products.categoryName}}</td>
+                    <td *ngIf="products.venderName == venderName">{{products.venderName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="screen == 'max-price'" class="product-by-vender">
+        <div>
+            <input type="text" placeholder="Enter max price" #dat class="input">
+            <button (click)="maxPriceAction(dat)">Click</button>
+        </div>
+        <table *ngIf="maxPrice != 0">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>category</td>
+                    <td>Vender</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let products of products">
+                    <td *ngIf="products.price <= maxPrice">{{products.id}}</td>
+                    <td *ngIf="products.price <= maxPrice">{{products.name}}</td>
+                    <td *ngIf="products.price <= maxPrice">{{products.price}}</td>
+                    <td *ngIf="products.price <= maxPrice">{{products.categoryName}}</td>
+                    <td *ngIf="products.price <= maxPrice">{{products.venderName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modall" *ngIf="modall1">
+    <div class="modall-div">
+        <p>Are You Sure to delete this product ? </p>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>category</td>
+                    <td>Vender</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td *ngIf = "product.id == deleteId">{{product.id}}</td>
+                    <td *ngIf = "product.id == deleteId">{{product.name}}</td>
+                    <td *ngIf = "product.id == deleteId">{{product.price}}</td>
+                    <td *ngIf = "product.id == deleteId">{{product.categoryName}}</td>
+                    <td *ngIf = "product.id == deleteId">{{product.venderName}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="btn-div">
+            <button (click)="closeModall()">Cencel</button>
+            <button (click)="deleteProduct()">Ok</button>
+        </div>
+    </div> 
+</div>
+<div class="modall" *ngIf="modall2">
+    <div class="modall-div">
+        <p>Are You Sure to delete this product ? </p>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>category</td>
+                    <td>Vender</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td *ngIf = "product.name == deleteName">{{product.id}}</td>
+                    <td *ngIf = "product.name == deleteName">{{product.name}}</td>
+                    <td *ngIf = "product.name == deleteName">{{product.price}}</td>
+                    <td *ngIf = "product.name == deleteName">{{product.categoryName}}</td>
+                    <td *ngIf = "product.name == deleteName">{{product.venderName}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="btn-div">
+            <button (click)="closeModall()">Cencel</button>
+            <button (click)="deleteProductName()">Ok</button>
+        </div>
+    </div> 
+    
+</div>
